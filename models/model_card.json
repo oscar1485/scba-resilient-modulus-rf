@@ -1,0 +1,43 @@
+{
+  "features": [
+    "% CBCA",
+    "Confining Stress-kPa",
+    "Cyclic Axial Stress-kPa",
+    "Contact Stress-kPa",
+    "theta"
+  ],
+  "hyperparameters": {
+    "n_estimators": 50,
+    "max_depth": 10,
+    "min_samples_split": 5,
+    "min_samples_leaf": 1,
+    "max_features": null,
+    "bootstrap": true,
+    "random_state": 42,
+    "criterion": "squared_error"
+  },
+  "training_ranges": {
+    "% CBCA": [
+      0.0,
+      10.0
+    ],
+    "Confining Stress-kPa": [
+      20.679493598455046,
+      137.91517058865603
+    ],
+    "Cyclic Axial Stress-kPa": [
+      16.902457991515053,
+      250.54494052710132
+    ],
+    "Contact Stress-kPa": [
+      2.02845722932382,
+      27.67296419313992
+    ],
+    "theta": [
+      80.75360962306303,
+      664.2767193698164
+    ]
+  },
+  "n_training_rows": 695,
+  "validation": "GroupShuffleSplit(0.20, seed 42) by Block + GroupKFold(5)"
+}

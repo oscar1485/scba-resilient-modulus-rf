@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# regenerable / heavy outputs (the notebook recreates them)
+models/*.pkl
+reports/figures/*.svg
+reports/figures/*.pdf

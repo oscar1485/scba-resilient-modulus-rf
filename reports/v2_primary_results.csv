@@ -1,0 +1,5 @@
+Model,R2,R2 95% CI,RMSE (MPa),MAE (MPa),MAPE (%),dR2 vs k-theta [95% CI]
+M4 RF (inputs known before the test),0.7777,"[0.59, 0.89]",38.9059,25.0811,15.5375,"-0.074 [-0.241, +0.046]"
+"M2 RF (+ permanent def., measured during the test)",0.8333,"[0.67, 0.93]",33.6949,19.5471,13.1286,"-0.017 [-0.168, +0.096]"
+k-theta law (per CBCA),0.8445,"[0.74, 0.92]",32.5397,23.5853,14.0551,-
+Hybrid k-theta + RF residual,0.8443,"[0.73, 0.92]",32.5568,21.8228,14.4047,"-0.003 [-0.072, +0.049]"
