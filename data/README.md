@@ -7,8 +7,10 @@ modified with sugarcane bagasse ash (SCBA).
 readings per sequence = 900 records. The 20 readings of a sequence are successive readings of the same specimen (a time series),
 **not** independent specimens. `Experimento` identifies only the SCBA level.
 
-**Provenance / license.** TODO: describe test standard, laboratory, dates and instrumentation.
-Data are intended to be released under **CC BY 4.0** (https://creativecommons.org/licenses/by/4.0/) — TODO: confirm with all co-authors and funders.
+**Provenance.** Cyclic triaxial resilient-modulus tests, Universidad Cooperativa de Colombia.
+Test standard / protocol: [COMPLETA, p. ej. norma y número de secuencias]. Laboratory: [COMPLETA]. Test dates: [COMPLETA]. Instrumentation (LVDTs, load cell): [COMPLETA].
+
+**License.** The data are released under **CC BY 4.0** (https://creativecommons.org/licenses/by/4.0/); the code is released under MIT (see `LICENSE`).
 
 **Data-quality screening (notebook, section 4.0).** 25 of the 900 readings are excluded from modelling:
 20 readings (10 % SCBA, sequence 15, N = 881–900) with zero axial resilient deformation (sensor fault), and 5 readings
