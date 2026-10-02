@@ -3,20 +3,35 @@ message: "If you use this code or data, please cite the article and this reposit
 title: "Code and data for: Resilient Modulus of SCBA-Modified Granular Subbases: Experimental and Random Forest Analysis"
 type: software
 version: "1.0.0"
-date-released: "2026-XX-XX"
+date-released: "2026-10-02"          # ajusta al día real del release (AAAA-MM-DD)
 license: MIT
 authors:
-  - family-names: "TODO"
-    given-names: "TODO"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
-    affiliation: "TODO"
-repository-code: "https://github.com/TODO-USER/scba-resilient-modulus-rf"
-# doi: "10.5281/zenodo.XXXXXXX"   # add after the first Zenodo release
-preferred-citation:
-  type: article
-  title: "Resilient Modulus of SCBA-Modified Granular Subbases: Experimental and Random Forest Analysis"
-  authors:
-    - family-names: "TODO"
-      given-names: "TODO"
-  journal: "TODO"
-  year: 2026
+  - family-names: "Hernández-Atencia"
+    given-names: "Yelena"
+    orcid: "https://orcid.org/0000-0002-7063-3159"
+    email: "yelena.hernandez@campusucc.edu.co"
+    affiliation: "Universidad Cooperativa de Colombia, Colombia"
+  - family-names: "Gutiérrez-Portela"
+    given-names: "Fernando"
+    orcid: "https://orcid.org/0000-0003-3722-3809"
+    affiliation: "Universidad Cooperativa de Colombia, Colombia"
+  - family-names: "Diaz-Triana"
+    given-names: "Oscar Augusto"
+    orcid: "https://orcid.org/0000-0001-7781-449X"
+    affiliation: "Universidad Cooperativa de Colombia, Colombia"
+  - family-names: "Pulecio-Díaz"
+    given-names: "Julián"
+    orcid: "https://orcid.org/0000-0001-6924-7034"
+    affiliation: "Universidad Cooperativa de Colombia, Colombia"
+  - family-names: "Forero-Muñoz"
+    given-names: "Fabiana"
+    orcid: "https://orcid.org/0009-0004-5172-4217"
+    affiliation: "Universidad Cooperativa de Colombia, Colombia"
+repository-code: "https://github.com/oscar1485/scba-resilient-modulus-rf"
+keywords:
+  - resilient modulus
+  - sugarcane bagasse ash
+  - granular subbase
+  - random forest
+  - target leakage
+  - grouped cross-validation

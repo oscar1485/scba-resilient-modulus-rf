@@ -1,73 +1,38 @@
-# Resilient modulus of SCBA-modified granular subbases — Random Forest analysis
+# Data
 
-Code and data accompanying the article *"Resilient Modulus of SCBA-Modified Granular Subbases: Experimental and Random Forest Analysis"* (TODO: journal, year, DOI).
+`raw/dataset_limpio.xlsx` — 900 records of cyclic triaxial resilient-modulus tests on a granular subbase material
+modified with sugarcane bagasse ash (SCBA).
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)  <!-- TODO: replace after the first Zenodo release -->
+**Experimental structure.** One physical specimen per SCBA content (0 %, 5 %, 10 %) × 15 loading sequences × 20 consecutive
+readings per sequence = 900 records. The 20 readings of a sequence are successive readings of the same specimen (a time series),
+**not** independent specimens. `Experimento` identifies only the SCBA level.
 
-## What this repository contains
+**Provenance.** Cyclic triaxial resilient-modulus tests, Universidad Cooperativa de Colombia.
+Test standard / protocol: [COMPLETA, p. ej. norma y número de secuencias]. Laboratory: [COMPLETA]. Test dates: [COMPLETA]. Instrumentation (LVDTs, load cell): [COMPLETA].
 
-An end-to-end, reproducible pipeline that predicts the axial resilient modulus (Mr) of a granular subbase stabilised with sugarcane bagasse ash (SCBA, 0 / 5 / 10 %) from the applied stress state, and audits the result for **target leakage** and **dependence between records**.
+**License.** The data are released under **CC BY 4.0** (https://creativecommons.org/licenses/by/4.0/); the code is released under MIT (see `LICENSE`).
 
-Key design points (details in the notebook and in `data/README.md`):
+**Data-quality screening (notebook, section 4.0).** 25 of the 900 readings are excluded from modelling:
+20 readings (10 % SCBA, sequence 15, N = 881–900) with zero axial resilient deformation (sensor fault), and 5 readings
+(10 % SCBA, sequence 1, N = 601–605) whose cyclic stress is more than 15 % away from the median of the block (seating cycles).
+The raw file is left unchanged.
 
-* The 900 records are **3 specimens × 15 loading sequences × 20 consecutive readings**. They are not independent observations, so random row-wise splitting is reported only as an upper bound.
-* All variables derived from the axial resilient cycle are excluded (Mr = Δσd / εr holds exactly in the data).
-* Four validation schemes are reported: V0 random split (upper bound), V1 block hold-out (20 repetitions), **V2 leave-one-sequence-out (primary)** and V3 leave-one-SCBA-level-out (extrapolation).
-* 25 of 900 readings are excluded by objective data-quality criteria (sensor fault / load transient). The raw file is unchanged; set `CLEAN_DATA = False` in the notebook to use all 900 rows.
+## Data dictionary
 
-## Main results (N = 875 screened readings, seed 42)
+| Column | Unit | Description | Role in the study |
+|---|---|---|---|
+| `N` | – | Reading index (1–900) | metadata (never a predictor) |
+| `Experimento` | – | SCBA content label (0 %, 5 %, 10 %) = specimen | metadata → `% CBCA` |
+| `Sequence Number` | – | Loading sequence (1–15) | metadata / validation groups |
+| `Axial Resilient Modulus-MPa` | MPa | Resilient modulus from the axial LVDTs, Mr = Δσd / εr | **target** |
+| `Actuator Resilient Modulus-MPa` | MPa | Resilient modulus from actuator displacement | excluded (leakage) |
+| `Axial Resilient def.-mm`, `Axial1/2 Resilient Def-mm`, `Av Axial Reilient Def-mm` | mm | Recoverable axial deformation (the typo "Reilient" is kept from the source file) | excluded (leakage) |
+| `Axial Resilient ustrain-µE`, `Axial1/2 Resilient ustrain-µE`, `Actuator Resilient ustrain-µE` | µε | Recoverable axial strain | excluded (leakage) |
+| `Axial Permanent def.-mm`, `Axial1/2 Permanent def.-mm`, `Actuator permanent def.-mm` | mm | Accumulated permanent deformation | M2/M3 only (measured during the test) |
+| `Axial Permanent strain-%`, `Actuator permanent strain-%` | % | Accumulated permanent strain | exploratory only |
+| `Cyclic Axial Load-kN`, `Contact Load-kN` | kN | Applied loads | not used (redundant with stresses) |
+| `Cyclic Axial Stress-kPa` | kPa | Cyclic (deviator) stress, Δσd | predictor |
+| `Contact Stress-kPa` | kPa | Contact stress | predictor (M3, M4) |
+| `Confining Stress-kPa` | kPa | Confining stress, σ3 | predictor |
 
-| Model | V2 R² (95 % block-bootstrap CI) | RMSE (MPa) |
-|---|---|---|
-| Random Forest, inputs known before the test (M4) | 0.78 [0.59, 0.89] | 38.9 |
-| Random Forest + permanent deformation (M2) | 0.83 [0.67, 0.93] | 33.7 |
-| Classical k–θ law (per SCBA level) | 0.84 [0.74, 0.92] | 32.5 |
-| Hybrid k–θ + RF residual | 0.84 [0.73, 0.92] | 32.6 |
-
-The Random Forest is comparable to — not better than — the classical k–θ law. Extrapolation to an unseen SCBA content (V3) gives R² ≈ 0.4–0.5 for every model; replicate specimens would be needed to support generalisation to new materials. Full tables: `reports/*.csv`.
-
-## Repository layout
-
-```
-├── data/
-│   ├── raw/dataset_limpio.xlsx        # 900 records (unchanged)
-│   └── README.md                      # data dictionary, provenance, screening rules
-├── notebooks/
-│   └── SCBA_resilient_modulus_ML_pipeline.ipynb
-├── reports/
-│   ├── *.csv                          # result tables (regenerated by the notebook)
-│   └── figures/                       # figures (regenerated by the notebook)
-├── models/                            # model_card.json (+ .pkl, not tracked)
-├── requirements.txt
-├── CITATION.cff
-└── LICENSE
-```
-
-## How to reproduce
-
-```bash
-git clone https://github.com/TODO-USER/scba-resilient-modulus-rf.git
-cd scba-resilient-modulus-rf
-
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-
-jupyter lab notebooks/SCBA_resilient_modulus_ML_pipeline.ipynb
-```
-
-Run **Kernel → Restart & Run All**. The notebook locates the project root from its own folder, reads `data/raw/dataset_limpio.xlsx` and writes tables, figures and the model to `reports/` and `models/`. Runtime is about 4–5 minutes on a laptop (the grid search and the validation study dominate). Figures are exported at 1 000 dpi (PNG/SVG/PDF), which can take a few extra minutes; lower the `dpi` argument of `export_figure` for a quick run.
-
-Verified with Python 3.12 and the package versions pinned in `requirements.txt` (scikit-learn 1.8.0). All randomness is controlled by `SEED = 42`; other library versions may change results in the last decimals.
-
-## Limitations
-
-Three physical specimens (one per SCBA level); validation schemes V1 and V2 withhold blocks of readings, not specimens. The model should be read as a surrogate of the constitutive response **within the tested stress range**, not as a predictor for new materials. The sensitivity sweep of section 9.3 is illustrative only (see the note in the notebook).
-
-## How to cite
-
-See `CITATION.cff` (GitHub shows a "Cite this repository" button) and cite the article above.
-
-## License
-
-Code: MIT (`LICENSE`). Data (`data/`): CC BY 4.0.
+Derived in the notebook: `% CBCA` (0, 5, 10), `theta = 3·σ3 + Δσd` (bulk stress) and `Block` (SCBA level × sequence, 45 blocks).
