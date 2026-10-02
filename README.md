@@ -28,6 +28,8 @@ The Random Forest is comparable to — not better than — the classical k–θ 
 
 ## Interactive app (planning and teaching)
 
+**Live app: https://scba-resilient-modulus-rf.streamlit.app/**
+
 A Streamlit app built on the same data and models: **(1) test plan** — the 15-sequence loading schedule with loads (kN) computed automatically from the specimen diameter, reference Mr values and expected recoverable deformation; **(2) simulator** — Mr for a chosen SCBA content (0, 5 or 10 %) and stress state, with an envelope check; **(3) learn** — short explanations, a Mr calculator and a self-test; **(4) about the model** — validation results and limitations.
 
 ```bash
@@ -41,11 +43,7 @@ Only the three tested SCBA contents are offered: with one specimen per level the
 
 ```
 ├── data/
-<<<<<<< HEAD
 │   ├── raw/scba-resilient-modulus-rf.xlsx        # 900 records (unchanged)
-=======
-│   ├── raw/scba-resilient-modulus-rf.xlsx        # 900 records (unchanged)
->>>>>>> 130b9382882ff2295248445018154bfb552deb5f
 │   └── README.md                      # data dictionary, provenance, screening rules
 ├── app/                               # Streamlit app (scba_core.py, streamlit_app.py, requirements.txt)
 ├── notebooks/
