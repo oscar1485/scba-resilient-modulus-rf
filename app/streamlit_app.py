@@ -9,7 +9,7 @@ import streamlit as st
 
 import scba_core as sc
 
-DOI = "https://doi.org/10.5281/zenodo.23101273"
+DOI = "https://doi.org/10.5281/zenodo.23101272"
 REPO = "https://github.com/oscar1485/scba-resilient-modulus-rf"
 LEVEL_LABEL = {0: "0 % (suelo/subbase sin ceniza)", 5: "5 % de SCBA", 10: "10 % de SCBA"}
 COLORS = {0: "#48C9B0", 5: "#5DADE2", 10: "#AF7AC5"}

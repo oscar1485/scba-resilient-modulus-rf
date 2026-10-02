@@ -2,7 +2,7 @@
 
 Code and data accompanying the article *"Resilient Modulus of SCBA-Modified Granular Subbases: Experimental and Random Forest Analysis"* (manuscript under revision; full reference will be added upon publication).
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23101273.svg)](https://doi.org/10.5281/zenodo.23101273)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23101272.svg)](https://doi.org/10.5281/zenodo.23101272)
 
 ## What this repository contains
 
