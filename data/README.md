@@ -1,6 +1,6 @@
 # Data
 
-`raw/dataset_limpio.xlsx` — 900 records of cyclic triaxial resilient-modulus tests on a granular subbase material
+`raw/scba-resilient-modulus-rf.xlsx` — 900 records of cyclic triaxial resilient-modulus tests on a granular subbase material
 modified with sugarcane bagasse ash (SCBA).
 
 **Experimental structure.** One physical specimen per SCBA content (0 %, 5 %, 10 %) × 15 loading sequences × 20 consecutive
