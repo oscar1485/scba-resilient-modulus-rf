@@ -41,7 +41,11 @@ Only the three tested SCBA contents are offered: with one specimen per level the
 
 ```
 ├── data/
-│   ├── raw/resilient-modulus-rf.xlsx        # 900 records (unchanged)
+<<<<<<< HEAD
+│   ├── raw/scba-resilient-modulus-rf.xlsx        # 900 records (unchanged)
+=======
+│   ├── raw/scba-resilient-modulus-rf.xlsx        # 900 records (unchanged)
+>>>>>>> 130b9382882ff2295248445018154bfb552deb5f
 │   └── README.md                      # data dictionary, provenance, screening rules
 ├── app/                               # Streamlit app (scba_core.py, streamlit_app.py, requirements.txt)
 ├── notebooks/
@@ -68,7 +72,7 @@ pip install -r requirements.txt
 jupyter lab notebooks/SCBA_resilient_modulus_ML_pipeline.ipynb
 ```
 
-Run **Kernel → Restart & Run All**. The notebook locates the project root from its own folder, reads `data/raw/resilient-modulus-rf.xlsx` and writes tables, figures and the model to `reports/` and `models/`. Runtime is about 4–5 minutes on a laptop (the grid search and the validation study dominate). Figures are exported at 1 000 dpi (PNG/SVG/PDF), which can take a few extra minutes; lower the `dpi` argument of `export_figure` for a quick run.
+Run **Kernel → Restart & Run All**. The notebook locates the project root from its own folder, reads `data/raw/scba-resilient-modulus-rf.xlsx` and writes tables, figures and the model to `reports/` and `models/`. Runtime is about 4–5 minutes on a laptop (the grid search and the validation study dominate). Figures are exported at 1 000 dpi (PNG/SVG/PDF), which can take a few extra minutes; lower the `dpi` argument of `export_figure` for a quick run.
 
 Verified with Python 3.12 and the package versions pinned in `requirements.txt` (scikit-learn 1.8.0). All randomness is controlled by `SEED = 42`; other library versions may change results in the last decimals.
 
