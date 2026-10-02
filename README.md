@@ -31,7 +31,7 @@ The Random Forest is comparable to — not better than — the classical k–θ 
 
 ```
 ├── data/
-│   ├── raw/dataset_limpio.xlsx        # 900 records (unchanged)
+│   ├── raw/scba-resilient-modulus-rf.xlsx        # 900 records (unchanged)
 │   └── README.md                      # data dictionary, provenance, screening rules
 ├── notebooks/
 │   └── SCBA_resilient_modulus_ML_pipeline.ipynb
