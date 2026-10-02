@@ -2,8 +2,7 @@
 
 Code and data accompanying the article *"Resilient Modulus of SCBA-Modified Granular Subbases: Experimental and Random Forest Analysis"* (manuscript under revision; full reference will be added upon publication).
 
-<!-- After the first Zenodo release, add the DOI badge here:
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23101273.svg)](https://doi.org/10.5281/zenodo.23101273)
 
 ## What this repository contains
 
@@ -27,12 +26,24 @@ Key design points (details in the notebook and in `data/README.md`):
 
 The Random Forest is comparable to — not better than — the classical k–θ law. Extrapolation to an unseen SCBA content (V3) gives R² ≈ 0.4–0.5 for every model; replicate specimens would be needed to support generalisation to new materials. Full tables: `reports/*.csv`.
 
+## Interactive app (planning and teaching)
+
+A Streamlit app built on the same data and models: **(1) test plan** — the 15-sequence loading schedule with loads (kN) computed automatically from the specimen diameter, reference Mr values and expected recoverable deformation; **(2) simulator** — Mr for a chosen SCBA content (0, 5 or 10 %) and stress state, with an envelope check; **(3) learn** — short explanations, a Mr calculator and a self-test; **(4) about the model** — validation results and limitations.
+
+```bash
+pip install -r app/requirements.txt
+streamlit run app/streamlit_app.py
+```
+
+Only the three tested SCBA contents are offered: with one specimen per level the model is not supported between them. Results are indicative and do not replace a laboratory test.
+
 ## Repository layout
 
 ```
 ├── data/
-│   ├── raw/dataset_limpio.xlsx        # 900 records (unchanged)
+│   ├── raw/resilient-modulus-rf.xlsx        # 900 records (unchanged)
 │   └── README.md                      # data dictionary, provenance, screening rules
+├── app/                               # Streamlit app (scba_core.py, streamlit_app.py, requirements.txt)
 ├── notebooks/
 │   └── SCBA_resilient_modulus_ML_pipeline.ipynb
 ├── reports/
@@ -57,7 +68,7 @@ pip install -r requirements.txt
 jupyter lab notebooks/SCBA_resilient_modulus_ML_pipeline.ipynb
 ```
 
-Run **Kernel → Restart & Run All**. The notebook locates the project root from its own folder, reads `data/raw/dataset_limpio.xlsx` and writes tables, figures and the model to `reports/` and `models/`. Runtime is about 4–5 minutes on a laptop (the grid search and the validation study dominate). Figures are exported at 1 000 dpi (PNG/SVG/PDF), which can take a few extra minutes; lower the `dpi` argument of `export_figure` for a quick run.
+Run **Kernel → Restart & Run All**. The notebook locates the project root from its own folder, reads `data/raw/resilient-modulus-rf.xlsx` and writes tables, figures and the model to `reports/` and `models/`. Runtime is about 4–5 minutes on a laptop (the grid search and the validation study dominate). Figures are exported at 1 000 dpi (PNG/SVG/PDF), which can take a few extra minutes; lower the `dpi` argument of `export_figure` for a quick run.
 
 Verified with Python 3.12 and the package versions pinned in `requirements.txt` (scikit-learn 1.8.0). All randomness is controlled by `SEED = 42`; other library versions may change results in the last decimals.
 
